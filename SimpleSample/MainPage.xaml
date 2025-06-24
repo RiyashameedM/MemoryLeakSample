@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SimpleSample.MainPage"
+             xmlns:local="clr-namespace:SimpleSample">
+    <ContentPage.BindingContext>
+        <local:LoadMoreViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0"
+               Text="Product Reviews"
+               CharacterSpacing="0.25"
+               FontFamily="Roboto-Medium"
+               FontSize="16"
+               Margin="16,10,0,0" />
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding ReviewInfo}"
+                        x:DataType="local:LoadMoreViewModel">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="local:ListViewProductReviewInfo">
+                    <Grid Margin="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="48" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding AuthorImage}"
+                               Grid.Column="0"
+                               Grid.Row="0"
+                               HeightRequest="40"
+                               WidthRequest="40"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Start" />
+                        <Grid VerticalOptions="Start"
+                              Grid.Row="0"
+                              Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0"
+                                   Text="{Binding AuthorName}"
+                                   FontFamily="Roboto-Medium"
+                                   FontSize="14"
+                                   CharacterSpacing="0.1" />
+                            <Grid Grid.Row="1"
+                                  Margin="0,2,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0"
+                                       Text="&#xe7CF;"
+                                       FontFamily="MauiSampleFontIcon" />
+                                <Label Grid.Column="1"
+                                       Text="&#xe7CF;"
+                                       FontFamily="MauiSampleFontIcon"
+                                       FontSize="20" />
+                                <Label Grid.Column="2"
+                                       Text="&#xe7CF;"
+                                       FontFamily="MauiSampleFontIcon"
+                                       FontSize="20" />
+                                <Label Grid.Column="3"
+                                       Text="&#xe7CF;"
+                                       FontFamily="MauiSampleFontIcon"
+                                       FontSize="20" />
+                                <Label Grid.Column="4"
+                                       Text="&#xe7CF;"
+                                       FontFamily="MauiSampleFontIcon"
+                                       FontSize="20" />
+                            </Grid>
+                            <Label Grid.Row="2"
+                                   Text="{Binding Comments}"
+                                   LineBreakMode="WordWrap"
+                                   FontFamily="Roboto-Regular"
+                                   LineHeight="1.2"
+                                   Margin="0,8,0,0"
+                                   FontSize="14"
+                                   CharacterSpacing="0.1"
+                                   Opacity="0.8" />
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
